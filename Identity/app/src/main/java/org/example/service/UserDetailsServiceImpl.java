@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.entities.UserInfo;
+import org.example.eventProducer.UserInfoProducer;
 import org.example.model.UserInfoDto;
 import org.example.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class UserDetailsServiceImpl implements UserDetailsService
 
     @Autowired
     private  PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserInfoProducer userInfoProducer;
+
+
 
     public UserDetailsServiceImpl(UserRepo userRepo, PasswordEncoder passwordEncoder) {
     }
@@ -54,6 +60,13 @@ public class UserDetailsServiceImpl implements UserDetailsService
         String userId = UUID.randomUUID().toString();
         userRepo.save(new UserInfo(userId, userInfoDto.getUsername(),
                 userInfoDto.getPassword(), new HashSet<>()));
+
+
+        //push event to queue
+
+        userInfoProducer.sendEventToKafka(userInfoDto);
+
+
 
         return true ;
 
