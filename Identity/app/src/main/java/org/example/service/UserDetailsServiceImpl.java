@@ -62,7 +62,7 @@ public class UserDetailsServiceImpl implements UserDetailsService
                 userInfoDto.getPassword(), new HashSet<>()));
 
 
-        //push event to queue
+        //push event to queue.. here we publish in kafka
 
         userInfoProducer.sendEventToKafka(userInfoDto);
 
