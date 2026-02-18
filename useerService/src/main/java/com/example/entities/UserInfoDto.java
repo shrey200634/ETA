@@ -1,32 +1,51 @@
 package com.example.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 import tools.jackson.databind.PropertyNamingStrategies;
 import tools.jackson.databind.annotation.JsonNaming;
 
-@Entity
-
+@Getter
+@Setter
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserInfoDto {
-
-    Long id ;
-
-    @Id
+    @JsonProperty("user_id")
+    @NonNull
     private String userId;
 
-    private String firstName ;
-    private String lastName ;
-    private Long phoneNumber ;
-    private String email ;
+    @JsonProperty("first_name")
+    @NonNull
+    private String firstName;
 
-     private String profilePic;
+    @JsonProperty("last_name")
+    @NonNull
+    private String lastName;
+
+    @JsonProperty("phone_number")
+    @NonNull
+    private Long phoneNumber;
+
+    @JsonProperty("email")
+    @NonNull
+    private String email;
+
+    @JsonProperty("profile_pic")
+    private String profilePic;
+
+    public UserInfo transformToUserInfo() {
+        return UserInfo.builder()
+                .firstName(firstName)
+                .lastName(lastName)
+                .userId(userId)
+                .email(email)
+                .profilePic(profilePic)
+                .phoneNumber(phoneNumber).build();
+    }
+
+
 }

@@ -1,12 +1,14 @@
 package com.example.repo;
 
-import com.example.entities.UserInfoDto;
+import com.example.entities.UserInfo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserRepo extends CrudRepository<UserInfoDto , String> {
+import java.util.Optional;
 
-    UserInfoDto findByUserId(String userId);
+@Repository
+public interface UserRepo extends CrudRepository<UserInfo , Long> {
+
+    Optional<UserInfo> findByUserId(String userId);
 
 }
