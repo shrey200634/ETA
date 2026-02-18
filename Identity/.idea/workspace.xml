@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10783e23-19c6-487f-a922-2a0f5fc98b6e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/example/service/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/example/service/JwtService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../useerService/src/main/java/com/example/consumer/AuthServiceConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../useerService/src/main/java/com/example/consumer/AuthServiceConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../useerService/src/main/java/com/example/entities/UserInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../useerService/src/main/java/com/example/entities/UserInfoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../useerService/src/main/java/com/example/repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../useerService/src/main/java/com/example/repo/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../useerService/src/main/java/com/example/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../useerService/src/main/java/com/example/service/UserService.java" afterDir="false" />
-    </list>
+    <list default="true" id="10783e23-19c6-487f-a922-2a0f5fc98b6e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,31 +107,5 @@
       <updated>1769265924374</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/org/example/controller/AuthController.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/org/example/controller/AuthController.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/org/example/controller/AuthController.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/org/example/controller/AuthController.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
