@@ -15,16 +15,21 @@ public class AuthServiceConsumer {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @KafkaListener(topics = "${spring.kafka.topic-json.name}", groupId = "${spring.kafka.consumer.group-id}")
-    public void listen(UserInfoDto eventData) {
+    @KafkaListener(topics = "${spring.kafka.topic-json.name}", groupId = "${userinfo-consumer-group}")
+    public void listen(String eventData) {
+        System.out.println("⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐");
+        System.out.println("MESSAGE RECEIVED: " + eventData);
+        System.out.println("⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐");
+
         try{
             userService.createOrUpdateUser(eventData);
         }catch(Exception ex){
             ex.printStackTrace();
             System.out.println("AuthServiceConsumer: Exception is thrown while consuming kafka event");
         }
-    }
+   }
 }
+
 
 
 

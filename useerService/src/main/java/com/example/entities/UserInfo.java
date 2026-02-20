@@ -14,13 +14,17 @@ import lombok.*;
 public class UserInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
 
     @JsonProperty("user_id")
     @NonNull
     private String userId;
+
+    private String username;
+    private String password;
+
 
     @JsonProperty("first_name")
     @NonNull
