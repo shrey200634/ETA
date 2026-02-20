@@ -18,6 +18,7 @@ public class UserController {
      @Autowired
      private  UserService userService;
 
+
      @GetMapping("/user/v1/getUser")
     public ResponseEntity<UserInfoDto> getUser(@RequestBody UserInfoDto userInfoDto ){
          try{
@@ -30,7 +31,7 @@ public class UserController {
     @PostMapping("/user/v1/createUpdate")
     public ResponseEntity<UserInfoDto> createUpdateUser(UserInfoDto userInfoDto){
         try{
-            UserInfoDto user = userService.createOrUpdateUser(userInfoDto);
+            UserInfoDto user = userService.createOrUpdateUser(String.valueOf(userInfoDto));
             return new ResponseEntity<>(user, HttpStatus.OK);
         }catch (Exception ex){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

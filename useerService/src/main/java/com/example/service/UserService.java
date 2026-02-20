@@ -18,7 +18,7 @@ public class UserService {
     @Autowired
     private final UserRepo userRepo;
 
-    public UserInfoDto createOrUpdateUser(UserInfoDto userInfoDto){
+    public UserInfoDto createOrUpdateUser(@org.jetbrains.annotations.UnknownNullability String userInfoDto){
         UnaryOperator<UserInfo> updatingUser = user ->{
             return userRepo.save(userInfoDto.transformToUserInfo());
         };
