@@ -8,31 +8,22 @@ import java.util.Map;
 
 public class UserInfoDeserializer implements Deserializer<UserInfoDto> {
 
+    private final ObjectMapper objectMapper = new ObjectMapper(); // Reuse instance
 
     @Override
-    public void configure(Map<String, ?> configs, boolean isKey) {
-    }
+    public void configure(Map<String, ?> configs, boolean isKey) {}
 
     @Override
-    public UserInfoDto deserialize(String arg0, byte[] arg1) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        UserInfoDto user = null ;
-        try{
-          user = objectMapper.readValue(arg1, UserInfoDto.class );
-
-        }catch (Exception ex){
-            System.out.println(" can not deserialize ");
+    public UserInfoDto deserialize(String topic, byte[] data) {
+        if (data == null) return null;
+        try {
+            return objectMapper.readValue(data, UserInfoDto.class); // Deserialize to DTO
+        } catch (Exception ex) {
+            System.err.println("Could not deserialize: " + ex.getMessage());
+            return null;
         }
-        return user;
-
-
     }
 
     @Override
-    public void close(){
-
-    }
-
-
-
+    public void close() {}
 }

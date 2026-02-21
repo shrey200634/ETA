@@ -18,25 +18,38 @@ public class UserService {
     @Autowired
     private final UserRepo userRepo;
 
-    public UserInfoDto createOrUpdateUser(@org.jetbrains.annotations.UnknownNullability String userInfoDto){
-        UnaryOperator<UserInfo> updatingUser = user ->{
+    public UserInfoDto createOrUpdateUser(UserInfoDto userInfoDto) { // Change String to UserInfoDto
+
+        // 1. Define how to update if user exists
+        UnaryOperator<UserInfo> updatingUser = user -> {
+            // Map fields from DTO to the existing Entity
+            user.setFirstName(userInfoDto.getFirstName());
+            user.setLastName(userInfoDto.getLastName());
+            user.setEmail(userInfoDto.getEmail());
+            user.setPhoneNumber(userInfoDto.getPhoneNumber());
+            user.setProfilePic(userInfoDto.getProfilePic());
+            return userRepo.save(user);
+        };
+
+        // 2. Define how to create if user is new
+        Supplier<UserInfo> createUser = () -> {
             return userRepo.save(userInfoDto.transformToUserInfo());
         };
 
-        Supplier<UserInfo> createUser=()->{
-            return userRepo.save(userInfoDto.transformToUserInfo());
-        };
+        // 3. Execute logic
         UserInfo userInfo = userRepo.findByUserId(userInfoDto.getUserId())
                 .map(updatingUser)
                 .orElseGet(createUser);
-        return new UserInfoDto(
-                userInfo.getUserId(),
-                userInfo.getFirstName(),
-                userInfo.getLastName(),
-                userInfo.getPhoneNumber(),
-                userInfo.getEmail(),
-                userInfo.getProfilePic()
-        );
+
+        // 4. Return the result as a DTO
+        return UserInfoDto.builder()
+                .userId(userInfo.getUserId())
+                .firstName(userInfo.getFirstName())
+                .lastName(userInfo.getLastName())
+                .phoneNumber(userInfo.getPhoneNumber())
+                .email(userInfo.getEmail())
+                .profilePic(userInfo.getProfilePic())
+                .build();
     }
 
     public UserInfoDto getUser(UserInfoDto userInfoDto) throws Exception{
