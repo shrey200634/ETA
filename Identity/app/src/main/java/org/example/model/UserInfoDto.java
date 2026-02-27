@@ -2,9 +2,7 @@ package org.example.model;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.entities.UserInfo;
 
 
@@ -12,6 +10,8 @@ import org.example.entities.UserInfo;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Setter
+@Getter
 
 public class UserInfoDto extends UserInfo
 {
