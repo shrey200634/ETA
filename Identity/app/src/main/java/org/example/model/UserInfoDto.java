@@ -15,6 +15,7 @@ import org.example.entities.UserInfo;
 
 public class UserInfoDto extends UserInfo
 {
+    @NonNull
     private String firstName ;
 
     private String lastName;
