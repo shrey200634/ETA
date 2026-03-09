@@ -1,6 +1,7 @@
 package com.Expense.service.consumer;
 
 import com.Expense.service.dto.Expensedto;
+import com.Expense.service.service.ExpenseService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,15 @@ public class ExpenseConsumer {
 
     }
 
-    @KafkaListener(topics = "${spring.kafka.topic-json.name}" , group ="${spring.kafka.consumer.group-id}")
+    @KafkaListener(topics = "${spring.kafka.topic-json.name}" , groupId ="${spring.kafka.consumer.group-id}")
     public void listen(Expensedto expensedto){
         try{
+            expenseService.createExpense(expensedto);
+
 
 
         }catch (Exception ex){
-            ex.printStackTrace();
-        }
+            System.out.println("exception is listening thee event ");        }
     }
 
 

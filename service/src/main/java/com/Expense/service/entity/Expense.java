@@ -2,10 +2,7 @@ package com.Expense.service.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Timestamp;
 import java.util.UUID;
@@ -28,6 +25,7 @@ public class Expense {
       @Column(name = "user_id")
     private String userId;
 
+      @NonNull
       @Column(name = "amount ")
     private String amount ;
 
@@ -37,6 +35,9 @@ public class Expense {
 
       @Column (name ="created_at")
     private Timestamp createdAt;
+
+      @Column(name ="merchant")
+      private String merchant;
 
       @PrePersist
     @PreUpdate
